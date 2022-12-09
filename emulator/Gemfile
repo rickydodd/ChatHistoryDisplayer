@@ -10,5 +10,6 @@ gem 'sinatra-cross_origin'
 
 group :development, :test do
   gem 'rerun'
+  gem 'rspec'
   gem 'rubocop'
 end
