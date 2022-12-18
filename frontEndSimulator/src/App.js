@@ -2,6 +2,16 @@ import { useState } from "react";
 import axios from "axios";
 import { Box, Button, TextField } from "@mui/material";
 import "./styling/index.css";
+//Simple navigation bar
+<html>
+<body>
+<ul>
+  <li><a href="#Home">Home</a></li>
+  <li><a href="#Unit">Units</a></li>
+  <li><a href="#About">About</a></li>
+</ul>
+</body>
+</html>
 function App() {
   // State variables
   const [fileName, setFileName] = useState("");
@@ -28,7 +38,6 @@ function App() {
       setResponse(JSON.stringify(response.data));
     });
   }
-
   function getDiff(endpoint) {
     const url = `http://localhost:4567/${endpoint}`;
     axios.get(url).then((response) => {
@@ -185,6 +194,18 @@ function App() {
                 sendGet(`file_exist/${uid}/${pid}/${fileName}`)
               }}
             >
+               Create Project
+            </Button>
+          </Box>
+
+          <Box paddingBottom={2} fullWidth>
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={() => {
+                getDiff(`diff/${uid}/${pid}/${fileName}`);
+              }}
+            >
               File Exists in Project?
             </Button>
           </Box>
@@ -203,18 +224,6 @@ function App() {
               fullWidth
               onClick={() => {
                 sendGet(`init/${uid}/${pid}`);
-              }}
-            >
-              Create Project
-            </Button>
-          </Box>
-
-          <Box paddingBottom={2} fullWidth>
-            <Button
-              variant="contained"
-              fullWidth
-              onClick={() => {
-                getDiff(`diff/${uid}/${pid}/${fileName}`);
               }}
             >
               Diff File
